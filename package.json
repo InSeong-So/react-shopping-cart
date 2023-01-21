@@ -1,0 +1,18 @@
+{
+  "name": "react-shopping-cart",
+  "private": true,
+  "description": "풀 스택 react-shopping-cart",
+  "author": "InSeong-So <goflvhxj2547@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:api": "turbo run dev --filter api",
+    "dev:web": "turbo run dev --filter web --filter api",
+    "type-check": "turbo run type-check",
+    "build": "turbo run build",
+    "test": "turbo run test --filter web"
+  },
+  "devDependencies": {
+    "turbo": "^1.7.0"
+  }
+}
