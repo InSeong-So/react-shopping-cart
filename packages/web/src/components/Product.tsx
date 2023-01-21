@@ -1,3 +1,75 @@
+import styled from '@emotion/styled';
+
+import type { ProductType } from 'domain';
+
+type Props = {
+  product: ProductType;
+};
+
+const Product = ({ product }: Props) => {
+  const { name, price, imageUrl } = product;
+
+  return (
+    <Container>
+      <Header>
+        <img src={imageUrl} alt="product" />
+      </Header>
+      <Footer>
+        <FooterLeft>
+          <p>{name}</p>
+          <p>{price} 원</p>
+        </FooterLeft>
+        <FooterRight type="button" title="cart">
+          <CartIcon />
+        </FooterRight>
+      </Footer>
+    </Container>
+  );
+};
+
+export default Product;
+
+const Container = styled.div``;
+
+const Header = styled.div`
+  & > img {
+    width: 100%;
+  }
+`;
+
+const Footer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const FooterLeft = styled.div`
+  & > p:first-of-type {
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.5px;
+  }
+
+  & > p:last-of-type {
+    font-size: 20px;
+    line-height: 27px;
+    letter-spacing: 0.5px;
+  }
+`;
+
+const FooterRight = styled.button`
+  all: unset;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > & img {
+    width: 30px;
+    height: 26px;
+  }
+`;
+
 const CartIcon = () => (
   <svg width="31" height="27" viewBox="0 0 31 27" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
@@ -6,4 +78,3 @@ const CartIcon = () => (
     />
   </svg>
 );
-export default CartIcon;

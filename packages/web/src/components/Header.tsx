@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 //
 import LogoPNG from '/images/logo.png';
 
-export default function Home() {
+const Header = () => {
   return (
     <Container>
       <Wrapper>
@@ -24,31 +24,40 @@ export default function Home() {
       </Wrapper>
     </Container>
   );
-}
+};
+
+export default Header;
 
 const Container = styled.header`
+  width: 100%;
+
   display: flex;
   justify-content: center;
-  width: 100%;
+
   padding: 0 32px;
+
   background: #2ac1bc;
+
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
 `;
 
 const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
   max-width: 1280px;
   height: 80px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Logo = styled.h1`
   a {
+    height: 100%;
+
     display: flex;
     align-items: center;
-    height: 100%;
+
     color: white;
 
     img {
@@ -59,6 +68,7 @@ const Logo = styled.h1`
     span {
       width: 333.83px;
       height: 57px;
+
       font-weight: 900;
       font-size: 40px;
       text-align: center;

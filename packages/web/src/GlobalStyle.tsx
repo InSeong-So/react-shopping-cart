@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css, Global } from '@emotion/react';
 
 const reset = css`
   html,
@@ -133,4 +133,20 @@ const reset = css`
   }
 `;
 
-export default reset;
+const GlobalStyle = () => (
+  <Global
+    styles={css`
+      ${reset}
+      body {
+        font-family: 'Noto Sans KR', sans-serif;
+      }
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    `}
+  />
+);
+
+export default GlobalStyle;

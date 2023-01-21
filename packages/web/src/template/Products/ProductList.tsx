@@ -1,11 +1,10 @@
 import styled from '@emotion/styled';
+//
+import { Product } from '@/components';
+import { 상품_리스트 } from '@/constants';
 
-import Product from './components/Product';
-
-import PRODUCTS from '../../fixtures/products';
-
-export default function Products() {
-  const { response } = PRODUCTS;
+const ProductList = () => {
+  const { response } = 상품_리스트;
 
   return (
     <Container>
@@ -14,16 +13,21 @@ export default function Products() {
       ))}
     </Container>
   );
-}
+};
+
+export default ProductList;
 
 const Container = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 47px 27px;
+
   padding: 60px 30px;
+
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
+
   @media screen and (max-width: 400px) {
     grid-template-columns: repeat(1, 1fr);
   }

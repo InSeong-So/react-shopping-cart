@@ -1,4 +1,6 @@
-const carts = {
+import type { CartsType } from 'domain';
+
+export const 장바구니: CartsType = {
   response: [
     {
       id: 1,
@@ -20,5 +22,3 @@ const carts = {
     },
   ],
 };
-
-export default carts;

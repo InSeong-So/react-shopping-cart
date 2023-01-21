@@ -1,13 +1,12 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Global } from '@emotion/react';
+//
 import App from './App';
-import reset from './styles/reset';
-import global from './styles/global';
+import GlobalStyle from './GlobalStyle';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
-    <Global styles={[reset, global]} />
+    <GlobalStyle />
     <App />
   </StrictMode>,
 );
