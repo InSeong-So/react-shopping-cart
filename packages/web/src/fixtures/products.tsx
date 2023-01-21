@@ -38,10 +38,10 @@ export type ProductType = {
   price: number;
   name: string;
   imageUrl: string;
-}
+};
 
 export type ProductsType = {
-  response: ProductType[]
-}
+  response: ProductType[];
+};
 
 export default PRODUCTS;

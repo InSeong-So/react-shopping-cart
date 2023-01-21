@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
+//
+import LogoPNG from '/images/logo.png';
 
 export default function Home() {
   return (
@@ -7,9 +9,7 @@ export default function Home() {
       <Wrapper>
         <Logo>
           <Link to="/">
-            <img
-              alt="wooma shop"
-            />
+            <img alt="wooma shop" src={LogoPNG} />
             <span>WOOMA SHOP</span>
           </Link>
         </Logo>
@@ -31,7 +31,7 @@ const Container = styled.header`
   justify-content: center;
   width: 100%;
   padding: 0 32px;
-  background: #2AC1BC;
+  background: #2ac1bc;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
 `;
 
@@ -50,12 +50,12 @@ const Logo = styled.h1`
     align-items: center;
     height: 100%;
     color: white;
-    
+
     img {
       width: 50px;
       height: 44px;
-    } 
-    
+    }
+
     span {
       width: 333.83px;
       height: 57px;
@@ -69,10 +69,10 @@ const Logo = styled.h1`
 
 const Nav = styled.ul`
   display: flex;
-  
+
   li {
     margin-right: 44px;
-    
+
     a {
       color: white;
       font-weight: 500;

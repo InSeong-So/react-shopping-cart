@@ -9,7 +9,9 @@ export default function Products() {
 
   return (
     <Container>
-      {response.map((product) => <Product key={product.id} product={product} />)}
+      {response.map((product) => (
+        <Product key={product.id} product={product} />
+      ))}
     </Container>
   );
 }

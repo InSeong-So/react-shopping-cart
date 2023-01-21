@@ -2,11 +2,11 @@ import styled from '@emotion/styled';
 
 import { ProductType } from '../../../fixtures/products';
 
-import CartIcon from '../../../components/CartIcon';
+import CartIcon from '../../../../public/svgs/CartIcon';
 
 type Props = {
-  product: ProductType
-}
+  product: ProductType;
+};
 
 export default function Product({ product }: Props) {
   const { name, price, imageUrl } = product;
@@ -19,11 +19,7 @@ export default function Product({ product }: Props) {
       <Footer>
         <FooterLeft>
           <p>{name}</p>
-          <p>
-            {price}
-            {' '}
-            원
-          </p>
+          <p>{price} 원</p>
         </FooterLeft>
         <FooterRight type="button" title="cart">
           <CartIcon />
@@ -33,9 +29,7 @@ export default function Product({ product }: Props) {
   );
 }
 
-const Container = styled.div`
-  
-`;
+const Container = styled.div``;
 
 const Header = styled.div`
   & > img {
@@ -68,7 +62,7 @@ const FooterRight = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   > & img {
     width: 30px;
     height: 26px;
