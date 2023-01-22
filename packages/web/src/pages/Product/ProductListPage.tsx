@@ -1,11 +1,5 @@
-import { ProductItem } from '@/components';
+import { ProductList } from '@/template/Product';
 
-const ProductListPage = () => (
-  <section className="product-container">
-    {Array.from({ length: 20 }).map((_, index) => (
-      <ProductItem key={index} />
-    ))}
-  </section>
-);
+const ProductListPage = () => <ProductList />;
 
 export default ProductListPage;
