@@ -4,6 +4,7 @@ import type { CSSProperties } from 'react';
 
 type HeaderElementKey =
   | 'headerContainer'
+  | 'headerArea'
   | 'headerTitleArea'
   | 'headerTitleLogo'
   | 'headerTitleItem'
@@ -12,17 +13,25 @@ type HeaderElementKey =
 
 const styles: Record<HeaderElementKey, CSSProperties> = {
   headerContainer: {
+    width: '100%',
+
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    backgroundColor: Palette.ShineBlue60,
+
+    boxShadow: '0 4px 4px rgba(0, 0, 0, 0.3)',
+  },
+  headerArea: {
     width: 'calc(100% - 64px)',
+    maxWidth: 1300,
 
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
 
     padding: '0 32px',
-
-    backgroundColor: Palette.ShineBlue60,
-
-    boxShadow: '0 4px 4px rgba(0, 0, 0, 0.3)',
   },
   headerTitleArea: {
     width: '100%',

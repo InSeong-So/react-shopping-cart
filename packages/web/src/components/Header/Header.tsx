@@ -11,19 +11,21 @@ const 헤더_네비게이션_메뉴_리스트 = [
 const Header = () => {
   return (
     <header style={styles.headerContainer}>
-      <div style={styles.headerTitleArea}>
-        <a href="/" style={styles.headerTitleLogo}>
-          <img style={styles.headerTitleItem} alt="parang-shop" src={LogoPNG} />
-          <span style={styles.headerTitleItem}>파랑 쇼핑몰</span>
-        </a>
+      <div style={styles.headerArea}>
+        <div style={styles.headerTitleArea}>
+          <a href="/" style={styles.headerTitleLogo}>
+            <img style={styles.headerTitleItem} alt="parang-shop" src={LogoPNG} />
+            <span style={styles.headerTitleItem}>파랑 쇼핑몰</span>
+          </a>
+        </div>
+        <nav style={styles.headerNavigationMenu}>
+          {헤더_네비게이션_메뉴_리스트.map(({ to, title }) => (
+            <Link to={to} key={to} style={styles.headerNavigationMenuItem}>
+              {title}
+            </Link>
+          ))}
+        </nav>
       </div>
-      <nav style={styles.headerNavigationMenu}>
-        {헤더_네비게이션_메뉴_리스트.map(({ to, title }) => (
-          <Link to={to} key={to} style={styles.headerNavigationMenuItem}>
-            {title}
-          </Link>
-        ))}
-      </nav>
     </header>
   );
 };
