@@ -1,19 +1,23 @@
 import { Routes as ProjectRoutes, Route, Navigate } from 'react-router-dom';
 //
-import DefaultLayout from './template/DefaultLayout';
-import ProductsPage from './pages/ProductsPage';
-import CartsPage from './pages/CartsPage';
-import OrdersPage from './pages/OrdersPage';
+import {
+  ProductListPage,
+  ProductDetailPage,
+  CartsPage,
+  OrderListPage,
+  OrderDetailPage,
+  OrderPage,
+} from './pages';
 
 const Routes = () => (
   <ProjectRoutes>
-    <Route path="/" element={<DefaultLayout />}>
-      <Route index element={<Navigate to="/products" />} />
-      <Route path="products" element={<ProductsPage />} />
-      <Route path="carts" element={<CartsPage />} />
-      <Route path="orders" element={<OrdersPage />} />
-      <Route path="*" element={<Navigate replace to="/" />} />
-    </Route>
+    <Route path="/product-detail" element={<ProductDetailPage />} />
+    <Route path="/products" element={<ProductListPage />} />
+    <Route path="/carts" element={<CartsPage />} />
+    <Route path="/order" element={<OrderPage />} />
+    <Route path="/order-detail" element={<OrderDetailPage />} />
+    <Route path="/orders" element={<OrderListPage />} />
+    <Route path="*" element={<Navigate replace to="/products" />} />
   </ProjectRoutes>
 );
 
