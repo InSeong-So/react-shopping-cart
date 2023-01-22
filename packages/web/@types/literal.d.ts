@@ -29,9 +29,17 @@ declare module 'domain' {
   };
 
   type OrdersType = {
-    response: {
+    response: Array<{
       id: number;
       orderDetails: OrderDetailsType[];
-    }[];
+    }>;
+  };
+}
+
+declare module 'components' {
+  import type { ReactNode } from 'react';
+
+  type ChildrenProps = {
+    children: ReactNode;
   };
 }

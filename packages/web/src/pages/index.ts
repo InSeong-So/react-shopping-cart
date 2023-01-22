@@ -1,4 +1,4 @@
 export * from './Product';
 export * from './Order';
 //
-export { default as CartsPage } from './CartsPage';
+export { default as CartPage } from './CartPage';
