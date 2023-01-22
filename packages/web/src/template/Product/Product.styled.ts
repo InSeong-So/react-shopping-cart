@@ -1,11 +1,10 @@
 import type { CSSProperties } from 'react';
 
-type StyledComponentProps<T extends string = string, P = any> = Record<
-  T,
-  (params: P) => CSSProperties
->;
+type StyledComponentProps<P = CSSProperties, T extends string = string> = Record<T, P>;
 
-const styles: StyledComponentProps<string, { isMedium?: boolean; isSmall?: boolean }> = {
+export const dynamicStyles: StyledComponentProps<
+  (params: { isMedium?: boolean; isSmall?: boolean }) => CSSProperties
+> = {
   productListContainer: ({ isMedium = false, isSmall = false }) => ({
     maxWidth: 1400,
 
@@ -17,4 +16,12 @@ const styles: StyledComponentProps<string, { isMedium?: boolean; isSmall?: boole
   }),
 };
 
-export default styles;
+export const styles: StyledComponentProps = {
+  productDetailContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+
+    padding: '60px 0',
+  },
+};

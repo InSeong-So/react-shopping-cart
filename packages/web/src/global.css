@@ -29,7 +29,9 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 body {
+    font-family: 'Noto Sans KR', sans-serif !important;
     line-height: 1;
+    background-color: #ffffff
 }
 ol, ul {
     list-style: none;

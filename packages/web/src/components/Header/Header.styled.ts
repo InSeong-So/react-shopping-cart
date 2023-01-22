@@ -34,7 +34,7 @@ const styles: Record<HeaderElementKey, CSSProperties> = {
     padding: '0 32px',
   },
   headerTitleArea: {
-    width: '100%',
+    minWidth: 300,
     height: 80,
 
     display: 'flex',
@@ -56,15 +56,16 @@ const styles: Record<HeaderElementKey, CSSProperties> = {
     ...Font.h1,
   },
   headerNavigationMenu: {
+    minWidth: 300,
+
     display: 'flex',
+    justifyContent: 'center',
     alignItems: 'center',
     gap: 40,
 
     color: Palette.White,
   },
   headerNavigationMenuItem: {
-    width: 90,
-
     ...Font.h4,
   },
 };
