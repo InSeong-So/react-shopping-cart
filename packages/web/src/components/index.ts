@@ -3,3 +3,4 @@ export { default as ProductItem } from './ProductItem';
 export { default as Divide } from './Divide';
 export { default as Payment } from './Payment';
 export { default as Checkbox } from './Checkbox';
+export { default as Button } from './Button';
