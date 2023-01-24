@@ -34,32 +34,45 @@ const Button: FunctionComponent<ButtonProps> = ({
 
 export default Button;
 
-const 버튼_크기_폰트_테이블: Record<ButtonSizeType, CSSProperties> = {
+const 버튼_크기_테이블: Record<ButtonSizeType, CSSProperties> = {
   small: {
+    padding: '12px 24px',
+
     ...Font.p2,
   },
   medium: {
+    padding: '12px 24px',
+
     ...Font.p1,
   },
   large: {
+    height: 73,
+    padding: '24px 24px',
+
     ...Font.h4,
   },
 };
 
 const 버튼_테마_테이블: Record<ButtonThemeType, CSSProperties> = {
   primary: {
+    border: 'none',
+
     color: Palette.White,
     backgroundColor: Palette.ShineBlue60,
 
     // @ts-ignore
+    '--button-hover-color': Palette.White,
+    // @ts-ignore
     '--button-hover-background-color': Palette.ShineBlue40,
   },
   secondary: {
-    border: `1px solid ${Palette.Gray60}`,
+    border: `1px solid ${Palette.Gray40}`,
 
     color: Palette.Gray90,
     backgroundColor: Palette.White,
 
+    // @ts-ignore
+    '--button-hover-color': Palette.Gray90,
     // @ts-ignore
     '--button-hover-background-color': Palette.Gray20,
   },
@@ -72,13 +85,10 @@ const style = ({ $size, $theme, $isBlock }: Required<ButtonStyleProps>): CSSProp
   justifyContent: 'center',
   alignItems: 'center',
 
-  padding: '12px 24px',
-  ...버튼_테마_테이블[$theme],
-
-  color: Palette.Gray90,
-  ...Font.regular,
-  ...버튼_크기_폰트_테이블[$size],
-
   cursor: 'pointer',
   transition: 'all 0.2s ease-in-out',
+
+  ...Font.regular,
+  ...버튼_크기_테이블[$size],
+  ...버튼_테마_테이블[$theme],
 });

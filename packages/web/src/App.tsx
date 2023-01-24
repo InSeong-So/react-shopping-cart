@@ -24,9 +24,16 @@ const styles: Record<'root' | 'main', CSSProperties> = {
   root: {
     width: '100%',
     height: '100%',
+
+    display: 'flex',
+    flexDirection: 'column',
   },
   main: {
+    minHeight: '100vh',
+
     display: 'flex',
     justifyContent: 'center',
+
+    paddingTop: 80,
   },
 };

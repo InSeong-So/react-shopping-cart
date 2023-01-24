@@ -6,7 +6,7 @@ export const dynamicStyles: StyledComponentProps<
   (params: { isMedium?: boolean; isSmall?: boolean }) => CSSProperties
 > = {
   productListContainer: ({ isMedium = false, isSmall = false }) => ({
-    maxWidth: 1400,
+    maxWidth: 1200,
 
     display: 'grid',
     gridTemplateColumns: `repeat(${isMedium ? 2 : isSmall ? 1 : 4}, 1fr)`,

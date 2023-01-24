@@ -1,25 +1,58 @@
-import { Checkbox } from '@/components';
+import { useState, WheelEvent } from 'react';
+//
+import { Button, Checkbox } from '@/components';
+import { TrashIcon } from '@/icons';
 import styles from './Cart.styled';
+//
+import ProductJPEG from '/images/cake/라즈베리_쇼콜라.jpeg';
 
-const CartItem = () => (
-  <div style={styles.cartItemArea}>
-    <div style={styles.carItemInfoArea}>
-      <Checkbox.Base defaultChecked={true} />
-      <img className="w-144 h-144" src="assets/images/product.png" alt="PET보틀-정사각(420ml)" />
-      <span className="cart-name">PET보틀-정사각(420ml)</span>
-    </div>
-    <div className="flex-col-center justify-end gap-15">
-      <img className="cart-trash-svg" src="assets/svgs/trash.svg" alt="삭제" />
-      <div className="number-input-container">
-        <input type="number" className="number-input" defaultValue="1" />
-        <div>
-          <button className="number-input-button">▲</button>
-          <button className="number-input-button">▼</button>
-        </div>
+const CartItem = () => {
+  const [count, setCount] = useState(1);
+
+  const numberWheelPrevent = (event: WheelEvent<HTMLInputElement>) => {
+    const $target = event.target as HTMLInputElement;
+    $target.blur();
+  };
+
+  return (
+    <div style={styles.cartItemArea}>
+      <div style={styles.cartItemInfoArea}>
+        <Checkbox.Base defaultChecked={true} />
+        <img style={styles.cartItemInfoImage} src={ProductJPEG} alt="PET보틀-정사각(420ml)" />
+        <span>PET보틀-정사각(420ml)</span>
       </div>
-      <span className="cart-price">123,456원</span>
+      <div style={styles.cartItemControlArea}>
+        <div style={{ cursor: 'pointer' }}>
+          <TrashIcon />
+        </div>
+        <div style={styles.carItemControlInputContainer}>
+          <input
+            type="number"
+            style={styles.carItemControlInput}
+            onWheel={numberWheelPrevent}
+            value={count}
+          />
+          <div style={styles.cartItemControlInputButtonArea}>
+            <Button
+              $theme="secondary"
+              style={{ ...styles.cartItemControlInputButton, borderBottom: '1px solid black' }}
+              onClick={() => setCount(() => count + 1)}
+            >
+              ▲
+            </Button>
+            <Button
+              $theme="secondary"
+              style={styles.cartItemControlInputButton}
+              onClick={() => setCount(() => count - 1)}
+            >
+              ▼
+            </Button>
+          </div>
+        </div>
+        <span style={styles.cartItemControlPannel}>123,456원</span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default CartItem;

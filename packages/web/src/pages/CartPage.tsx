@@ -1,20 +1,25 @@
-import { Payment } from '@/components';
-import { CartTitle, CartList, CartContainer } from '@/template/Cart';
-//
-import type { CSSProperties } from 'react';
+import PaymentCard from '@/template/PaymentCard';
+import {
+  CartTitle,
+  CartList,
+  cartContainerStyle,
+  cartAreaStyle,
+  cartLeftSectionStyle,
+  cartRightSectionStyle,
+} from '@/template/Cart';
 
 const CartPage = () => (
-  <CartContainer>
+  <section style={cartContainerStyle}>
     <CartTitle />
-    <div style={style}>
-      <CartList />
-      <Payment />
+    <div style={cartAreaStyle}>
+      <section style={cartLeftSectionStyle}>
+        <CartList />
+      </section>
+      <section style={cartRightSectionStyle}>
+        <PaymentCard />
+      </section>
     </div>
-  </CartContainer>
+  </section>
 );
 
 export default CartPage;
-
-const style: CSSProperties = {
-  display: 'flex',
-};

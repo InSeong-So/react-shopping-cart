@@ -1,5 +1,7 @@
-import { Checkbox } from '@/components';
 import { Fragment, useRef } from 'react';
+//
+import { Button, Checkbox, Divide } from '@/components';
+import styles from './Cart.styled';
 import CartItem from './CartItem';
 
 const CartList = () => {
@@ -10,25 +12,27 @@ const CartList = () => {
   };
 
   return (
-    <section className="cart-left-section">
-      <div className="flex justify-between items-center">
+    <>
+      <div style={styles.cartDeleteAllCheckboxArea}>
         <Checkbox.Container
           name="all-delete-product"
           label="선택해제"
           onChange={handleChange}
           $checkboxRef={allCheckboxRef}
         />
-        <button className="delete-button">상품삭제</button>
+        <Button $size="small" $theme="secondary">
+          상품삭제
+        </Button>
       </div>
-      <h3 className="cart-title">든든배송 상품(3개)</h3>
-      <hr className="divide-line-gray mt-10" />
+      <h3 style={styles.cartListTitle}>든든배송 상품 (3개)</h3>
+      <Divide $theme="gray" />
       {Array.from({ length: 3 }).map((_, index) => (
         <Fragment key={index}>
           <CartItem />
-          <hr className="divide-line-thin mt-10" />
+          {index !== 2 && <Divide $theme="thin" />}
         </Fragment>
       ))}
-    </section>
+    </>
   );
 };
 

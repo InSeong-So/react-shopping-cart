@@ -1,8 +1,9 @@
 import { Divide } from '@/components';
+import styles from './Cart.styled';
 
 const CartTitle = () => (
-  <header className="flex-col-center mt-20">
-    <h2 className="cart-section__title">장바구니</h2>
+  <header style={styles.cartHeader}>
+    <h2 style={styles.cartHeaderTitle}>장바구니</h2>
     <Divide />
   </header>
 );

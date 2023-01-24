@@ -1,32 +1,41 @@
 import { Palette } from '@/themes';
 import type { CSSProperties } from 'react';
 
-type DivideKey = 'normal' | 'gray' | 'thin';
+type DivideThemeType = 'normal' | 'gray' | 'thin';
 
 type DivideProps = {
-  type?: DivideKey;
+  $theme?: DivideThemeType;
 };
 
-const Divide = ({ type = 'normal' }: DivideProps) => <hr style={styles[type]} />;
+const Divide = ({ $theme = 'normal' }: DivideProps) => <hr style={styles[$theme]} />;
 
-const styles: Record<DivideKey, CSSProperties> = {
+const styles: Record<DivideThemeType, CSSProperties> = {
   normal: {
     width: '100%',
+    height: 4,
 
     margin: '20px 0',
-    border: `2px solid ${Palette.Gray90}`,
+    border: 0,
+
+    backgroundColor: Palette.Gray90,
   },
   gray: {
     width: '100%',
+    height: 4,
 
     margin: '20px 0',
-    border: `2px solid ${Palette.Gray30}`,
+    border: 0,
+
+    backgroundColor: Palette.Gray30,
   },
   thin: {
     width: '100%',
+    height: 2,
 
     margin: '20px 0',
-    border: `1px solid ${Palette.Gray30}`,
+    border: 0,
+
+    backgroundColor: Palette.Gray30,
   },
 };
 

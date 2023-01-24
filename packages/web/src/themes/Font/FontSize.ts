@@ -2,35 +2,35 @@ import { FontSizeTypes } from './FontSize.types';
 
 const FontSize: FontSizeTypes = {
   h1: {
-    fontSize: '42px',
+    fontSize: 42,
     lineHeight: 1.5,
   },
   h2: {
-    fontSize: '36px',
+    fontSize: 36,
     lineHeight: 1.4,
   },
   h3: {
-    fontSize: '30px',
+    fontSize: 30,
     lineHeight: 1.3,
   },
   h4: {
-    fontSize: '24px',
+    fontSize: 24,
     lineHeight: 1.2,
   },
   p1: {
-    fontSize: '18px',
+    fontSize: 20,
     lineHeight: 1,
   },
   p2: {
-    fontSize: '16px',
+    fontSize: 16,
     lineHeight: 1,
   },
   p3: {
-    fontSize: '14px',
+    fontSize: 14,
     lineHeight: 1,
   },
   p4: {
-    fontSize: '12px',
+    fontSize: 12,
     lineHeight: 1,
   },
 };

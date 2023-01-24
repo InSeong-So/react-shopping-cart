@@ -1,4 +1,7 @@
+import './checkbox.css';
+//
 import { ChangeEvent, CSSProperties, forwardRef, InputHTMLAttributes, RefObject } from 'react';
+import { Palette } from '@/themes';
 
 type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   label?: string;
@@ -11,7 +14,14 @@ const CheckboxBase = forwardRef<HTMLInputElement, CheckboxProps>(({ onChange, ..
   };
 
   return (
-    <input ref={ref} style={styles.checkbox} onChange={handleOnChange} {...props} type="checkbox" />
+    <input
+      ref={ref}
+      {...props}
+      className="checkbox"
+      type="checkbox"
+      onChange={handleOnChange}
+      style={styles.checkbox}
+    />
   );
 });
 
@@ -43,9 +53,11 @@ const styles: Record<string, CSSProperties> = {
     width: '1.75rem',
     height: '1.75rem',
 
-    border: '1px solid #2ac1bc',
+    border: `1px solid ${Palette.ShineBlue60}`,
     borderRadius: 2,
 
     cursor: 'pointer',
+    // @ts-ignore
+    '--checkbox-checked-background-color': Palette.ShineBlue60,
   },
 };

@@ -33,7 +33,7 @@ const ProductItem = ({
       <img style={styles.productDetailItemImage} src={imgSrc} alt={desc} />
       <div style={styles.productDetailItemInfo}>
         <span style={styles.productDetailItemInfoTitle}>PET보틀-정사각(420ml)</span>
-        <Divide type="thin" />
+        <Divide $theme="thin" />
         <div style={styles.productDetailItemInfoArea}>
           <span>금액</span>
           <span>43,000원</span>

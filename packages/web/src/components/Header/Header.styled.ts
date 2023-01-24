@@ -14,6 +14,7 @@ type HeaderElementKey =
 const styles: Record<HeaderElementKey, CSSProperties> = {
   headerContainer: {
     width: '100%',
+    position: 'fixed',
 
     display: 'flex',
     justifyContent: 'center',
@@ -25,7 +26,7 @@ const styles: Record<HeaderElementKey, CSSProperties> = {
   },
   headerArea: {
     width: 'calc(100% - 64px)',
-    maxWidth: 1300,
+    maxWidth: 1200,
 
     display: 'flex',
     justifyContent: 'space-between',

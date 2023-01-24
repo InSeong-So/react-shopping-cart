@@ -1,0 +1,31 @@
+.checkbox {
+  -moz-apperance: none;
+  -webkit-appearance: none;
+  position: relative;
+  outline: none !important;
+}
+
+.checkbox::before {
+  content: "✔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  transform: scale(0) translate(-50%, -50%);
+  line-height: 1;
+}
+
+.checkbox:hover {
+  opacity: 0.6;
+}
+
+.checkbox:checked {
+  background-color: var(--checkbox-checked-background-color) !important;
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.checkbox:checked::before {
+  border-radius: 2px;
+  transform: scale(1) translate(-50%, -50%)
+}
