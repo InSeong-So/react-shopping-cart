@@ -30,20 +30,6 @@ const styles: Record<string, CSSProperties> = {
     margin: '80px 12px 0 80px',
     border: `1px solid ${Palette.Gray30}`,
   },
-  // FIXME
-  cartHeader: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-
-    marginTop: 20,
-  },
-  cartHeaderTitle: {
-    color: Palette.Gray90,
-    ...Font.h3,
-    ...Font.bold,
-  },
   cartItemArea: {
     display: 'flex',
     justifyContent: 'space-between',

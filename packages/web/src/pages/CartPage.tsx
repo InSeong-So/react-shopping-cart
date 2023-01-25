@@ -1,16 +1,16 @@
-import PaymentCard from '@/template/PaymentCard';
+import { PageTitle } from '@/components';
 import {
-  CartTitle,
   CartList,
   cartContainerStyle,
   cartAreaStyle,
   cartLeftSectionStyle,
   cartRightSectionStyle,
 } from '@/template/Cart';
+import PaymentCard from '@/template/PaymentCard';
 
 const CartPage = () => (
   <section style={cartContainerStyle}>
-    <CartTitle />
+    <PageTitle>장바구니</PageTitle>
     <div style={cartAreaStyle}>
       <section style={cartLeftSectionStyle}>
         <CartList />
