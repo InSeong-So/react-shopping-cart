@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Header } from '@/components';
 import Routes from './Routes';
 //
-import type { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 
 const App = () => {
   return (

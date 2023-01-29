@@ -1,46 +1,55 @@
+import { memo } from 'react';
+import { useNavigate } from 'react-router-dom';
+//
 import { CartIcon } from '@/icons';
 import styles from './ProductItem.styled';
 import Divide from '../Divide';
 //
-import { 당근_피칸_케이크 } from 'assets';
+import type { ProductType } from 'global-types';
+//
 
 type ProductProps = {
-  imgSrc?: string;
-  desc?: string;
+  item: ProductType;
   type?: 'detail' | 'normal';
 };
 
-const ProductItem = ({
-  imgSrc = 당근_피칸_케이크,
-  desc = 'parang-shop-product-item',
-  type = 'normal',
-}: ProductProps) =>
-  type === 'normal' ? (
-    <div style={styles.productItemContainer}>
-      <img src={imgSrc} alt={desc} />
-      <div style={styles.productItemArea}>
-        <div style={styles.productItemInfo}>
-          <span style={styles.productItemInfoName}>PET보틀-정사각(420ml)</span>
-          <span style={styles.productItemInfoPrice}>43,000원</span>
-        </div>
-        <div style={styles.productItemInfoIconArea}>
-          <CartIcon />
-        </div>
-      </div>
-    </div>
-  ) : (
-    <div style={styles.productDetailItemContainer}>
-      <img style={styles.productDetailItemImage} src={imgSrc} alt={desc} />
-      <div style={styles.productDetailItemInfo}>
-        <span style={styles.productDetailItemInfoTitle}>PET보틀-정사각(420ml)</span>
-        <Divide $theme="thin" />
-        <div style={styles.productDetailItemInfoArea}>
-          <span>금액</span>
-          <span>43,000원</span>
-        </div>
-      </div>
-      <button style={styles.productDetailButton}>장바구니</button>
-    </div>
-  );
+const ProductItem = ({ item, type = 'normal' }: ProductProps) => {
+  const navigate = useNavigate();
 
-export default ProductItem;
+  const handleClickGoToDetailPage = () => {
+    navigate(`/product-detail?productId=${item.productId}`);
+  };
+
+  return (
+    <>
+      {type === 'normal' ? (
+        <div style={styles.productItemContainer} onClick={handleClickGoToDetailPage}>
+          <img src={item.src} alt={item.title} />
+          <div style={styles.productItemArea}>
+            <div style={styles.productItemInfo}>
+              <span style={styles.productItemInfoName}>{item.title}</span>
+              <span style={styles.productItemInfoPrice}>{item.price}원</span>
+            </div>
+            <div style={styles.productItemInfoIconArea}>
+              <CartIcon />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div style={styles.productDetailItemContainer}>
+          <img style={styles.productDetailItemImage} src={item.src} alt={item.title} />
+          <div style={styles.productDetailItemInfo}>
+            <span style={styles.productDetailItemInfoTitle}>{item.title}</span>
+            <Divide $theme="thin" />
+            <div style={styles.productDetailItemInfoArea}>
+              <span>금액</span>
+              <span>{item.price}원</span>
+            </div>
+          </div>
+          <button style={styles.productDetailButton}>장바구니</button>
+        </div>
+      )}
+    </>
+  );
+};
+export default memo(ProductItem);

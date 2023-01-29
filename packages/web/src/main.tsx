@@ -4,10 +4,12 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 //
 import App from './App';
-// import initializeMockupWorker from './__mock__';
+import initializeMockupWorker from './__mock__';
 
-createRoot(document.getElementById('root') as HTMLElement).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-);
+initializeMockupWorker().then(() => {
+  createRoot(document.getElementById('root') as HTMLElement).render(
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  );
+});

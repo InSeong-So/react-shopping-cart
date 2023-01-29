@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Routes as ProjectRoutes, Route, Navigate } from 'react-router-dom';
 //
 import {
@@ -21,4 +22,4 @@ const Routes = () => (
   </ProjectRoutes>
 );
 
-export default Routes;
+export default memo(Routes);

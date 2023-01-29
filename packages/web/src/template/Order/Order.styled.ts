@@ -5,7 +5,7 @@ import type { CSSProperties } from 'react';
 const styles: Record<string, CSSProperties> = {
   orderContainer: {
     width: '100%',
-    maxWidth: 1200,
+    maxWidth: 1300,
 
     display: 'flex',
     flexDirection: 'column',

@@ -26,7 +26,7 @@ const styles: Record<HeaderElementKey, CSSProperties> = {
   },
   headerArea: {
     width: 'calc(100% - 64px)',
-    maxWidth: 1200,
+    maxWidth: 1300,
 
     display: 'flex',
     justifyContent: 'space-between',

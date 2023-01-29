@@ -1,7 +1,7 @@
 import { Button } from '@/components';
 import styles from './OrderItem.styled';
 //
-import { 당근_피칸_케이크 } from 'assets';
+import managedList from '../../__mock__/data/products';
 
 type OrderItemProps = {
   imgSrc?: string;
@@ -10,7 +10,7 @@ type OrderItemProps = {
 };
 
 const OrderItem = ({
-  imgSrc = 당근_피칸_케이크,
+  imgSrc = managedList.bread[5].src,
   desc = 'parang-shop-product-item',
   type,
 }: OrderItemProps) => (

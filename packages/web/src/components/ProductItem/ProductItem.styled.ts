@@ -23,15 +23,15 @@ const styles: Record<ProductItemElementKey, CSSProperties> = {
 
     display: 'flex',
     flexDirection: 'column',
+
+    cursor: 'pointer',
   },
   productItemArea: {
-    width: 'calc(100% - 20px)',
-
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
 
-    padding: '20px 10px 10px',
+    padding: '20px 20px 10px',
   },
   productItemInfo: {
     display: 'flex',

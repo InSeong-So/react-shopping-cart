@@ -4,7 +4,7 @@ import { Button, Checkbox } from '@/components';
 import { TrashIcon } from '@/icons';
 import styles from './Cart.styled';
 //
-import { 라즈베리_쇼콜라 } from 'assets';
+import { cake } from 'assets';
 
 const CartItem = () => {
   const [count, setCount] = useState(1);
@@ -18,7 +18,11 @@ const CartItem = () => {
     <div style={styles.cartItemArea}>
       <div style={styles.cartItemInfoArea}>
         <Checkbox.Base defaultChecked={true} />
-        <img style={styles.cartItemInfoImage} src={라즈베리_쇼콜라} alt="PET보틀-정사각(420ml)" />
+        <img
+          style={styles.cartItemInfoImage}
+          src={cake.라즈베리_쇼콜라}
+          alt="PET보틀-정사각(420ml)"
+        />
         <span>PET보틀-정사각(420ml)</span>
       </div>
       <div style={styles.cartItemControlArea}>

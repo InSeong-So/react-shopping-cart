@@ -5,7 +5,7 @@ import type { CSSProperties } from 'react';
 const styles: Record<string, CSSProperties> = {
   cartContainer: {
     width: '100%',
-    maxWidth: 1200,
+    maxWidth: 1300,
 
     padding: '24px 0',
   },
