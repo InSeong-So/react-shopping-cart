@@ -1,6 +1,6 @@
 import './checkbox.css';
 //
-import { ChangeEvent, CSSProperties, forwardRef, InputHTMLAttributes, RefObject } from 'react';
+import { CSSProperties, forwardRef, InputHTMLAttributes, RefObject } from 'react';
 import { Palette } from '@/themes';
 
 type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -8,22 +8,16 @@ type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   $checkboxRef?: RefObject<HTMLInputElement>;
 };
 
-const CheckboxBase = forwardRef<HTMLInputElement, CheckboxProps>(({ onChange, ...props }, ref) => {
-  const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange && onChange(event);
-  };
-
-  return (
-    <input
-      ref={ref}
-      {...props}
-      className="checkbox"
-      type="checkbox"
-      onChange={handleOnChange}
-      style={styles.checkbox}
-    />
-  );
-});
+const CheckboxBase = forwardRef<HTMLInputElement, CheckboxProps>(({ onChange, ...props }, ref) => (
+  <input
+    ref={ref}
+    {...props}
+    className="checkbox"
+    type="checkbox"
+    onChange={onChange}
+    style={styles.checkbox}
+  />
+));
 
 const CheckboxContainer = ({ name, label = '', $checkboxRef, ...props }: CheckboxProps) => (
   <div style={styles.checkboxContainer}>

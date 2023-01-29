@@ -1,7 +1,7 @@
 import styles from './Order.styled';
 
 export const orderContainerStyle = styles.orderContainer;
-export const orderAreaStyle = styles.orderArea;
+export const orderPaymentAreaStyle = styles.orderPaymentArea;
 export const orderLeftSectionStyle = styles.orderLeftSection;
 export const orderRightSectionStyle = styles.orderRightSection;
 

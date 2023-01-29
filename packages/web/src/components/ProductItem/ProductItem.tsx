@@ -2,7 +2,7 @@ import { CartIcon } from '@/icons';
 import styles from './ProductItem.styled';
 import Divide from '../Divide';
 //
-import DefaultImage from '/images/cake/당근_피칸_케이크.jpeg';
+import { 당근_피칸_케이크 } from 'assets';
 
 type ProductProps = {
   imgSrc?: string;
@@ -11,7 +11,7 @@ type ProductProps = {
 };
 
 const ProductItem = ({
-  imgSrc = DefaultImage,
+  imgSrc = 당근_피칸_케이크,
   desc = 'parang-shop-product-item',
   type = 'normal',
 }: ProductProps) =>

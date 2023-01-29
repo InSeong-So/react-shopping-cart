@@ -2,7 +2,7 @@ import { PageTitle } from '@/components';
 import OrderItem from '@/components/OrderItem';
 import {
   orderContainerStyle,
-  orderAreaStyle,
+  orderPaymentAreaStyle,
   orderLeftSectionStyle,
   orderRightSectionStyle,
 } from '@/template/Order';
@@ -11,7 +11,7 @@ const OrderPage = () => (
   <section style={orderContainerStyle}>
     <PageTitle>주문/결제</PageTitle>
 
-    <div style={orderAreaStyle}>
+    <div style={orderPaymentAreaStyle}>
       <section style={orderLeftSectionStyle}>
         <h3 className="order-title">주문 상품(3건)</h3>
         <hr className="divide-line-gray mt-10" />

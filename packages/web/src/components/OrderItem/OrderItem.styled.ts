@@ -1,3 +1,4 @@
+import { Font, Palette } from '@/themes';
 import { CSSProperties } from 'react';
 
 type OrderItemElementKey =
@@ -11,7 +12,10 @@ type OrderItemElementKey =
 const styles: Record<OrderItemElementKey, CSSProperties> = {
   orderItemContainer: {
     display: 'flex',
-    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+
+    padding: '40px 25px',
   },
   orderItemArea: {
     display: 'flex',
@@ -25,10 +29,19 @@ const styles: Record<OrderItemElementKey, CSSProperties> = {
   },
   orderItemInfo: {
     display: 'flex',
+    flexDirection: 'column',
     gap: 15,
+
+    ...Font.regular,
   },
-  orderItemInfoTitle: {},
-  orderItemInfoQuantity: {},
+  orderItemInfoTitle: {
+    color: Palette.Gray90,
+    ...Font.p1,
+  },
+  orderItemInfoQuantity: {
+    color: Palette.Gray60,
+    ...Font.p2,
+  },
 };
 
 export default styles;

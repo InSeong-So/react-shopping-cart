@@ -34,6 +34,6 @@ const styles: Record<'root' | 'main', CSSProperties> = {
     display: 'flex',
     justifyContent: 'center',
 
-    paddingTop: 80,
+    padding: '80px 0',
   },
 };
