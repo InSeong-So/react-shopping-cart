@@ -24,7 +24,9 @@ const ProductItem = ({ item, type = 'normal' }: ProductProps) => {
     <>
       {type === 'normal' ? (
         <div style={styles.productItemContainer} onClick={handleClickGoToDetailPage}>
-          <img style={styles.productItemImage} src={item.src} alt={item.title} />
+          <div style={styles.productItemImageArea}>
+            <img style={styles.productItemImage} src={item.src} alt={item.title} />
+          </div>
           <div style={styles.productItemArea}>
             <div style={styles.productItemInfo}>
               <span style={styles.productItemInfoName}>{item.title}</span>

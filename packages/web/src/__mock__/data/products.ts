@@ -21,7 +21,7 @@ const listParser = (fileList: Array<[string, string]>, name: string, classificat
     ).toLocaleString(),
   }));
 
-export default [
+const products = [
   ...listParser(Object.entries(bread), 'bread'),
   ...listParser(Object.entries(cake), 'cake'),
   ...listParser(Object.entries(blended), 'coffee', 'blended'),
@@ -31,3 +31,11 @@ export default [
   ...listParser(Object.entries(frappuccino), 'coffee', 'frappuccino'),
   ...listParser(Object.entries(tea), 'coffee', 'tea'),
 ] as ProductListType;
+
+const shuffle = (array: unknown[]) => {
+  array.sort(() => Math.random() - 0.5);
+};
+
+shuffle(products);
+
+export default products;

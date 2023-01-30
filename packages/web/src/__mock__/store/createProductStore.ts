@@ -15,6 +15,8 @@ const createProductStore = () => {
         name: 'parang-shopping-products',
       });
 
+      console.log(managedList.length);
+
       await _productStore.setItem<ProductListType>('products', managedList);
     },
     async getProducts(start: number, end: number) {

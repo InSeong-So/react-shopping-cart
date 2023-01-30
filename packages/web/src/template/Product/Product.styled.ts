@@ -7,6 +7,7 @@ export const dynamicStyles: ResponsiveStyledComponentProps = {
     display: 'grid',
     gridTemplateColumns: `repeat(${isMedium ? 2 : isSmall ? 1 : 4}, 1fr)`,
     gridTemplateRows: 'max-content',
+    justifyContent: 'center',
     gap: '27px 17px',
 
     padding: '60px 0',

@@ -4,6 +4,7 @@ import type { CSSProperties } from 'react';
 
 type ProductItemElementKey =
   | 'productItemContainer'
+  | 'productItemImageArea'
   | 'productItemImage'
   | 'productItemArea'
   | 'productItemInfo'
@@ -21,22 +22,30 @@ type ProductItemElementKey =
 const styles: Record<ProductItemElementKey, CSSProperties> = {
   productItemContainer: {
     width: 300,
+    height: 'auto',
 
     display: 'flex',
     flexDirection: 'column',
 
     cursor: 'pointer',
   },
+  productItemImageArea: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   productItemImage: {
     width: 300,
     height: 300,
+
+    padding: 10,
   },
   productItemArea: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
 
-    padding: '20px 20px 10px',
+    padding: 10,
   },
   productItemInfo: {
     display: 'flex',
