@@ -1,6 +1,5 @@
 import { Palette, Font } from '@/themes';
-//
-import type { CSSProperties } from 'react';
+import { ResponsiveStyledComponentProps } from 'components';
 
 type HeaderElementKey =
   | 'headerContainer'
@@ -11,8 +10,8 @@ type HeaderElementKey =
   | 'headerNavigationMenu'
   | 'headerNavigationMenuItem';
 
-const styles: Record<HeaderElementKey, CSSProperties> = {
-  headerContainer: {
+const dynamicStyles: ResponsiveStyledComponentProps<HeaderElementKey> = {
+  headerContainer: () => ({
     width: '100%',
     position: 'fixed',
 
@@ -23,8 +22,8 @@ const styles: Record<HeaderElementKey, CSSProperties> = {
     backgroundColor: Palette.ShineBlue60,
 
     boxShadow: '0 4px 4px rgba(0, 0, 0, 0.3)',
-  },
-  headerArea: {
+  }),
+  headerArea: () => ({
     width: 'calc(100% - 64px)',
     maxWidth: 1300,
 
@@ -33,20 +32,20 @@ const styles: Record<HeaderElementKey, CSSProperties> = {
     alignItems: 'center',
 
     padding: '0 32px',
-  },
-  headerTitleArea: {
+  }),
+  headerTitleArea: () => ({
     minWidth: 300,
     height: 80,
 
     display: 'flex',
     alignItems: 'center',
-  },
-  headerTitleLogo: {
+  }),
+  headerTitleLogo: () => ({
     display: 'flex',
     alignItems: 'center',
     gap: 20,
-  },
-  headerTitleItem: {
+  }),
+  headerTitleItem: () => ({
     height: 44,
 
     display: 'flex',
@@ -55,8 +54,8 @@ const styles: Record<HeaderElementKey, CSSProperties> = {
     color: Palette.White,
     textAlign: 'center',
     ...Font.h1,
-  },
-  headerNavigationMenu: {
+  }),
+  headerNavigationMenu: () => ({
     minWidth: 300,
 
     display: 'flex',
@@ -65,10 +64,10 @@ const styles: Record<HeaderElementKey, CSSProperties> = {
     gap: 40,
 
     color: Palette.White,
-  },
-  headerNavigationMenuItem: {
+  }),
+  headerNavigationMenuItem: () => ({
     ...Font.h4,
-  },
+  }),
 };
 
-export default styles;
+export default dynamicStyles;

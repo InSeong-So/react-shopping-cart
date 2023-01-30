@@ -1,7 +1,17 @@
 import { useEffect, useMemo, useState } from 'react';
 
-const useMediaQuery = (mediaQueryString: string) => {
-  const query = useMemo(() => window.matchMedia(mediaQueryString), [mediaQueryString]);
+type MediaQueryKey = 'medium' | 'small';
+
+const 반응형_넓이_뷰포트 = {
+  medium: '(min-width: 767px) and (max-width: 1023px)',
+  small: '(max-width: 767px)',
+};
+
+const useMediaQuery = (mediaQueryString: 'medium' | 'small' | string) => {
+  const $mediaQueryString = ['medium', 'small'].includes(mediaQueryString)
+    ? 반응형_넓이_뷰포트[mediaQueryString as MediaQueryKey]
+    : mediaQueryString;
+  const query = useMemo(() => window.matchMedia($mediaQueryString), [$mediaQueryString]);
   const [matches, setMatches] = useState(query.matches);
 
   useEffect(() => {

@@ -12,9 +12,14 @@ declare module 'client' {
 }
 
 declare module 'components' {
-  import type { ReactNode } from 'react';
+  import type { CSSProperties } from 'react';
 
-  type ChildrenProps = {
-    children: ReactNode;
-  };
+  type MediaQueryType = { isLarge?: boolean; isMedium?: boolean; isSmall?: boolean };
+
+  type StyledComponentProps<P = CSSProperties, T extends string = string> = Record<T, P>;
+
+  type ResponsiveStyledComponentProps<T extends string = string> = StyledComponentProps<
+    (params: MediaQueryType) => CSSProperties,
+    T
+  >;
 }

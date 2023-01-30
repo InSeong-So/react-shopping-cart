@@ -4,6 +4,7 @@ import type { CSSProperties } from 'react';
 
 type ProductItemElementKey =
   | 'productItemContainer'
+  | 'productItemImage'
   | 'productItemArea'
   | 'productItemInfo'
   | 'productItemInfoName'
@@ -25,6 +26,10 @@ const styles: Record<ProductItemElementKey, CSSProperties> = {
     flexDirection: 'column',
 
     cursor: 'pointer',
+  },
+  productItemImage: {
+    width: 300,
+    height: 300,
   },
   productItemArea: {
     display: 'flex',

@@ -1,12 +1,11 @@
 import useMediaQuery from '@/hooks/useMedia';
 import { dynamicStyles, styles } from './Product.styled';
 //
-import type { ChildrenProps } from 'components';
-import { memo } from 'react';
+import { memo, PropsWithChildren } from 'react';
 
-const ProductListContainer = ({ id, children }: ChildrenProps & { id: string }) => {
-  const isMedium = useMediaQuery('(min-width: 767px) and (max-width: 1023px)');
-  const isSmall = useMediaQuery('(max-width: 767px)');
+const ProductListContainer = ({ id, children }: PropsWithChildren<{ id: string }>) => {
+  const isMedium = useMediaQuery('medium');
+  const isSmall = useMediaQuery('small');
 
   return (
     <section id={id} style={dynamicStyles.productListContainer({ isMedium, isSmall })}>
@@ -15,7 +14,7 @@ const ProductListContainer = ({ id, children }: ChildrenProps & { id: string }) 
   );
 };
 
-const ProductDetailContainer = ({ children }: ChildrenProps) => (
+const ProductDetailContainer = ({ children }: PropsWithChildren<void>) => (
   <section style={styles.productDetailContainer}>{children}</section>
 );
 

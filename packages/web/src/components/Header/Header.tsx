@@ -1,6 +1,7 @@
+import useMediaQuery from '@/hooks/useMedia';
 import { Link } from 'react-router-dom';
 //
-import styles from './Header.styled';
+import dynamicStyles from './Header.styled';
 import { 로고 } from 'assets';
 
 const 헤더_네비게이션_메뉴_리스트 = [
@@ -9,18 +10,20 @@ const 헤더_네비게이션_메뉴_리스트 = [
 ];
 
 const Header = () => {
+  const isMedium = useMediaQuery('medium');
+
   return (
-    <header style={styles.headerContainer}>
-      <div style={styles.headerArea}>
-        <div style={styles.headerTitleArea}>
-          <a href="/" style={styles.headerTitleLogo}>
-            <img style={styles.headerTitleItem} alt="parang-shop" src={로고} />
-            <span style={styles.headerTitleItem}>파랑 쇼핑몰</span>
+    <header style={dynamicStyles.headerContainer({})}>
+      <div style={dynamicStyles.headerArea({})}>
+        <div style={dynamicStyles.headerTitleArea({})}>
+          <a href="/" style={dynamicStyles.headerTitleLogo({})}>
+            <img style={dynamicStyles.headerTitleItem({})} alt="parang-shop" src={로고} />
+            <span style={dynamicStyles.headerTitleItem({})}>파랑 쇼핑몰</span>
           </a>
         </div>
-        <nav style={styles.headerNavigationMenu}>
+        <nav style={dynamicStyles.headerNavigationMenu({})}>
           {헤더_네비게이션_메뉴_리스트.map(({ to, title }) => (
-            <Link to={to} key={to} style={styles.headerNavigationMenuItem}>
+            <Link to={to} key={to} style={dynamicStyles.headerNavigationMenuItem({})}>
               {title}
             </Link>
           ))}

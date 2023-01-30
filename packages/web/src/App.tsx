@@ -29,8 +29,6 @@ const styles: Record<'root' | 'main', CSSProperties> = {
     flexDirection: 'column',
   },
   main: {
-    minHeight: '100vh',
-
     display: 'flex',
     justifyContent: 'center',
 

@@ -1,10 +1,9 @@
 import { Font, Palette } from '@/themes';
 import Divide from './Divide';
 //
-import type { CSSProperties } from 'react';
-import type { ChildrenProps } from 'components';
+import type { PropsWithChildren, CSSProperties } from 'react';
 
-const PageTitle = ({ children }: ChildrenProps) => (
+const PageTitle = ({ children }: PropsWithChildren<void>) => (
   <header style={styles.titleArea}>
     <h2 style={styles.titleText}>{children}</h2>
     <Divide />
