@@ -9,12 +9,14 @@ import { ProductListType } from 'global-types';
 const ProductListPage = () => {
   const [products, setProducts] = useState<ProductListType>([]);
   const { loadMoreRef, page } = useInfiniteScroll();
-  const { loading, data } = useFetch<ProductListType>(page);
+  const { loading, data } = useFetch<ProductListType>(
+    `/products?start=${page * 8 - 7}&end=${page * 8}`,
+  );
 
   useEffect(() => {
     if (!data) return;
-    setProducts([...products, ...data]);
-  }, [data, page]);
+    setProducts((prev) => [...prev, ...data]);
+  }, [data]);
 
   return (
     <ProductContainer.List id="scroll-area">

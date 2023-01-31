@@ -14,7 +14,7 @@ const ProductListContainer = ({ id, children }: PropsWithChildren<{ id: string }
   );
 };
 
-const ProductDetailContainer = ({ children }: PropsWithChildren<void>) => (
+const ProductDetailContainer = ({ children }: PropsWithChildren<unknown>) => (
   <section style={styles.productDetailContainer}>{children}</section>
 );
 

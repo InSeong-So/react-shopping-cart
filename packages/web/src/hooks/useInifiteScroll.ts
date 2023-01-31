@@ -4,11 +4,10 @@ function useInfiniteScroll() {
   const [page, setPage] = useState(1);
   const loadMoreRef = useRef(null);
 
-  const handleObserver = useCallback((entries: IntersectionObserverEntry[]) => {
-    const [target] = entries;
-    if (target.isIntersecting) {
-      setPage((prev) => prev + 1);
-    }
+  const handleObserver = useCallback(([entry]: IntersectionObserverEntry[]) => {
+    if (!entry.isIntersecting) return;
+
+    setPage((prev) => prev + 1);
   }, []);
 
   useEffect(() => {
@@ -21,6 +20,8 @@ function useInfiniteScroll() {
     const observer = new IntersectionObserver(handleObserver, option);
 
     if (loadMoreRef.current) observer.observe(loadMoreRef.current);
+
+    return () => observer.disconnect();
   }, [handleObserver]);
 
   return { loadMoreRef, page };

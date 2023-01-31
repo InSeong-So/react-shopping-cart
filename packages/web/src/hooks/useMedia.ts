@@ -3,7 +3,8 @@ import { useEffect, useMemo, useState } from 'react';
 type MediaQueryKey = 'medium' | 'small';
 
 const 반응형_넓이_뷰포트 = {
-  medium: '(min-width: 767px) and (max-width: 1023px)',
+  large: '(min-width: 1025px)',
+  medium: '(min-width: 768px) and (max-width: 1024px)',
   small: '(max-width: 767px)',
 };
 

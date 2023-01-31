@@ -1,31 +1,33 @@
 import { useState, useEffect, useCallback } from 'react';
 
-function useFetch<T>(page: number) {
+function useFetch<T>(url: string) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<T>();
 
   const fetchData = useCallback(
     async ({ signal }: AbortController) => {
+      setLoading(true);
+
       try {
-        setLoading(true);
-        const response = await fetch(`/products?start=${page * 8 - 7}&end=${page * 8}`, { signal });
+        const response = await fetch(url, { signal });
         const result = await response.json();
-        console.log(result);
+
         setData(result);
-        setLoading(false);
       } catch (err) {
+        if ((err as { code: number }).code === 20) return;
+        console.dir(err);
+      } finally {
         setLoading(false);
-        // console.error(err);
       }
     },
-    [page],
+    [url],
   );
 
   useEffect(() => {
     const controller = new AbortController();
-    fetchData(controller);
+    void fetchData(controller);
     return () => controller.abort();
-  }, [fetchData, page]);
+  }, [fetchData, url]);
 
   return { loading, data };
 }

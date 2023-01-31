@@ -8,17 +8,17 @@ import { ProductType } from 'global-types';
 const ProductDetailPage = () => {
   const [searchParams] = useSearchParams();
 
-  const { data, loading } = useFetch<ProductType>(
+  const { data: product, loading } = useFetch<ProductType>(
     `/product?productId=${searchParams.get('productId')}`,
   );
 
   if (loading) return <>로딩중</>;
 
-  if (!data) return <>상품 정보가 존재하지 않습니다</>;
+  if (!product) return <>상품 정보가 존재하지 않습니다</>;
 
   return (
     <ProductContainer.Detail>
-      <ProductItem type="detail" item={data} />
+      <ProductItem type="detail" item={product} />
     </ProductContainer.Detail>
   );
 };
