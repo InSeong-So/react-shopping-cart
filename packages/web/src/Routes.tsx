@@ -12,14 +12,23 @@ import {
 
 const Routes = () => (
   <ProjectRoutes>
-    <Route path="/product-detail" element={<ProductDetailPage />} />
-    <Route path="/products" element={<ProductListPage />} />
-    <Route path="/carts" element={<CartPage />} />
-    <Route path="/order" element={<OrderPage />} />
-    <Route path="/order-detail" element={<OrderDetailPage />} />
-    <Route path="/orders" element={<OrderListPage />} />
-    <Route path="*" element={<Navigate replace to="/products" />} />
+    <Route path={페이지.상품_상세} element={<ProductDetailPage />} />
+    <Route path={페이지.상품_목록} element={<ProductListPage />} />
+    <Route path={페이지.장바구니} element={<CartPage />} />
+    <Route path={페이지.주문_결제} element={<OrderPage />} />
+    <Route path={페이지.주문_상세} element={<OrderDetailPage />} />
+    <Route path={페이지.주문_목록} element={<OrderListPage />} />
+    <Route path="*" element={<Navigate replace to={페이지.상품_목록} />} />
   </ProjectRoutes>
 );
 
 export default memo(Routes);
+
+export const 페이지 = {
+  상품_목록: '/products',
+  상품_상세: '/product-detail',
+  장바구니: '/cart',
+  주문_결제: '/order',
+  주문_목록: '/orders',
+  주문_상세: '/order-detail',
+};

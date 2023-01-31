@@ -10,7 +10,7 @@ type OrderItemProps = {
 };
 
 const OrderItem = ({
-  imgSrc = managedList.bread[5].src,
+  imgSrc = managedList[5].src,
   desc = 'parang-shop-product-item',
   type,
 }: OrderItemProps) => (

@@ -1,5 +1,5 @@
 import { Palette, Font } from '@/themes';
-import { ResponsiveStyledComponentProps } from 'components';
+import { ResponsiveStyledComponentProps, StyledComponentProps } from 'components';
 
 type HeaderElementKey =
   | 'headerContainer'
@@ -10,7 +10,7 @@ type HeaderElementKey =
   | 'headerNavigationMenu'
   | 'headerNavigationMenuItem';
 
-const dynamicStyles: ResponsiveStyledComponentProps<HeaderElementKey> = {
+export const dynamicStyles: ResponsiveStyledComponentProps<HeaderElementKey> = {
   headerContainer: () => ({
     width: '100%',
     position: 'fixed',
@@ -45,7 +45,7 @@ const dynamicStyles: ResponsiveStyledComponentProps<HeaderElementKey> = {
     alignItems: 'center',
     gap: 20,
   }),
-  headerTitleItem: () => ({
+  headerTitleItem: ({ isMedium }) => ({
     height: 44,
 
     display: 'flex',
@@ -53,7 +53,7 @@ const dynamicStyles: ResponsiveStyledComponentProps<HeaderElementKey> = {
 
     color: Palette.White,
     textAlign: 'center',
-    ...Font.h1,
+    ...(isMedium ? Font.p1 : Font.h1),
   }),
   headerNavigationMenu: () => ({
     minWidth: 300,
@@ -65,9 +65,13 @@ const dynamicStyles: ResponsiveStyledComponentProps<HeaderElementKey> = {
 
     color: Palette.White,
   }),
-  headerNavigationMenuItem: () => ({
-    ...Font.h4,
+  headerNavigationMenuItem: ({ isMedium }) => ({
+    ...(isMedium ? Font.p4 : Font.h4),
   }),
 };
 
-export default dynamicStyles;
+export const styles: StyledComponentProps = {
+  headerNavigationMenuImageArea: {
+    position: 'relative',
+  },
+};

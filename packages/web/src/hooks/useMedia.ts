@@ -4,7 +4,7 @@ type MediaQueryKey = 'medium' | 'small';
 
 const 반응형_넓이_뷰포트 = {
   large: '(min-width: 1025px)',
-  medium: '(min-width: 768px) and (max-width: 1024px)',
+  medium: '(max-width: 1024px)',
   small: '(max-width: 767px)',
 };
 
