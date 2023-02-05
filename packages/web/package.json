@@ -9,11 +9,13 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.24.4",
+    "assets": "../assets",
+    "jotai": "^2.0.0",
     "localforage": "^1.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.7.0",
-    "assets": "../assets"
+    "react-router-dom": "^6.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",

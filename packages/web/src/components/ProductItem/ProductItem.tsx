@@ -1,3 +1,4 @@
+import { useAddProductToCart } from '@/queries';
 import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 //
@@ -15,9 +16,14 @@ type ProductProps = {
 
 const ProductItem = ({ item, type = 'normal' }: ProductProps) => {
   const navigate = useNavigate();
+  const { mutate } = useAddProductToCart();
 
   const handleClickGoToDetailPage = () => {
     navigate(`/product-detail?productId=${item.productId}`);
+  };
+
+  const handleClickProductToCart = () => {
+    mutate({ ...item });
   };
 
   return (
@@ -32,7 +38,7 @@ const ProductItem = ({ item, type = 'normal' }: ProductProps) => {
               <span style={styles.productItemInfoName}>{item.title}</span>
               <span style={styles.productItemInfoPrice}>{item.price}원</span>
             </div>
-            <div style={styles.productItemInfoIconArea}>
+            <div style={styles.productItemInfoIconArea} onClick={handleClickProductToCart}>
               <CartIcon />
             </div>
           </div>
@@ -48,7 +54,9 @@ const ProductItem = ({ item, type = 'normal' }: ProductProps) => {
               <span>{item.price}원</span>
             </div>
           </div>
-          <button style={styles.productDetailButton}>장바구니</button>
+          <button style={styles.productDetailButton} onClick={handleClickProductToCart}>
+            장바구니
+          </button>
         </div>
       )}
     </>

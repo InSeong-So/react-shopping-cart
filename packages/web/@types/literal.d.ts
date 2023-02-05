@@ -1,10 +1,14 @@
 declare module 'global-types' {
-  type ProductType = Record<
-    'productId' | 'title' | 'src' | 'category' | 'classification' | 'price',
-    string
-  >;
-
-  type ProductListType = ProductType[];
+  type ProductType = {
+    productId: string;
+    title: string;
+    src: string;
+    category: string;
+    classification: string;
+    price: string;
+    quantity: number;
+    isChecked?: boolean;
+  };
 }
 
 declare module 'client' {

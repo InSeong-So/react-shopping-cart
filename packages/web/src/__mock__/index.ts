@@ -3,7 +3,9 @@ import { productStore } from './store';
 
 const url = {
   url:
-    process.env.NODE_ENV === 'production' ? '/react-shopping-cart/mockServiceWorker.js' : undefined,
+    process.env.NODE_ENV === 'production'
+      ? '/react-shopping-cart/mockServiceWorker.js'
+      : '/mockServiceWorker.js',
 };
 
 const initializeMockupWorker = async () => {

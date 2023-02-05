@@ -3,7 +3,12 @@ import { Font, Palette } from '@/themes';
 //
 import type { CSSProperties } from 'react';
 
-const PaymentCard = () => (
+type PaymentCardProps = {
+  price: string;
+  count: number;
+};
+
+const PaymentCard = ({ price, count }: PaymentCardProps) => (
   <div style={styles.paymentCardContainer}>
     <div style={styles.paymentCardTitleArea}>
       <h3 style={styles.paymentCardTitle}>결제예상금액</h3>
@@ -16,13 +21,13 @@ const PaymentCard = () => (
           <span style={styles.paymentCardHighlight} />
         </span>
         <span style={styles.paymentCardHighlightText}>
-          21,800원
+          {price}원
           <span style={styles.paymentCardHighlight} />
         </span>
       </div>
       <div style={styles.paymentCardButtonArea}>
         <Button $isBlock $size="large" $theme="primary">
-          주문하기 (3개)
+          주문하기 ({count}개)
         </Button>
       </div>
     </div>

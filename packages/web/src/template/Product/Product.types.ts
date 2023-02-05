@@ -1,9 +1,9 @@
-import type { ProductListType } from 'global-types';
+import type { ProductType } from 'global-types';
 
 export type UseLoadProductsReturnTypes = {
   loading: boolean;
   hasNextPage: boolean;
-  products: ProductListType;
+  products: ProductType[];
   loadMore: () => void;
   error: string | null;
 };

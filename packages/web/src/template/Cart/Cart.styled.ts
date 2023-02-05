@@ -7,7 +7,7 @@ const styles: Record<string, CSSProperties> = {
     width: '100%',
     maxWidth: 1300,
 
-    padding: '24px 0',
+    padding: '60px 0',
   },
   cartArea: {
     width: '100%',
@@ -94,7 +94,7 @@ const styles: Record<string, CSSProperties> = {
 
     cursor: 'pointer',
   },
-  cartItemControlPannel: {
+  cartItemControlPanel: {
     alignSelf: 'flex-end',
 
     color: Palette.Gray60,

@@ -1,21 +1,20 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, useLayoutEffect, useState } from 'react';
 //
+import { useFetchProductList } from '@/queries';
 import { ProductItem } from '@/components';
 import { ProductContainer } from '@/template/Product';
 import useInfiniteScroll from '@/hooks/useInifiteScroll';
-import useFetch from '@/hooks/useFetch';
-import { ProductListType } from 'global-types';
+//
+import type { ProductType } from 'global-types';
 
 const ProductListPage = () => {
-  const [products, setProducts] = useState<ProductListType>([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
   const { loadMoreRef, page } = useInfiniteScroll();
-  const { loading, data } = useFetch<ProductListType>(
-    `/products?start=${page * 8 - 7}&end=${page * 8}`,
-  );
+  const { isLoading, data } = useFetchProductList(page);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!data) return;
-    setProducts((prev) => [...prev, ...data]);
+    setProducts([...products, ...data]);
   }, [data]);
 
   return (
@@ -23,7 +22,7 @@ const ProductListPage = () => {
       {products.map((item) => (
         <ProductItem key={item.productId} item={item} />
       ))}
-      <div ref={loadMoreRef}>{loading && <>로딩 중</>}</div>
+      <div ref={loadMoreRef}>{isLoading && <>로딩 중</>}</div>
     </ProductContainer.List>
   );
 };

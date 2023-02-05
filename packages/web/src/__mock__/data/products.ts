@@ -1,6 +1,6 @@
 import * as 모든_상품_목록 from 'assets';
 //
-import type { ProductListType } from 'global-types';
+import type { ProductType } from 'global-types';
 
 const {
   bread,
@@ -19,6 +19,7 @@ const listParser = (fileList: Array<[string, string]>, name: string, classificat
       Math.floor(Math.random() * 6 + 3) * 1000 +
       Math.floor(Math.random() * 9 + 1) * 100
     ).toLocaleString(),
+    quantity: 1,
   }));
 
 const products = [
@@ -30,7 +31,7 @@ const products = [
   ...listParser(Object.entries(espresso), 'coffee', 'espresso'),
   ...listParser(Object.entries(frappuccino), 'coffee', 'frappuccino'),
   ...listParser(Object.entries(tea), 'coffee', 'tea'),
-] as ProductListType;
+] as ProductType[];
 
 const shuffle = (array: unknown[]) => {
   array.sort(() => Math.random() - 0.5);

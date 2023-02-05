@@ -16,7 +16,7 @@ const alias: Record<string, string> = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/react-shopping-cart',
+  base: process.env.NODE_ENV === 'production' ? '/react-shopping-cart' : '/',
   server: {
     port: 3000,
   },

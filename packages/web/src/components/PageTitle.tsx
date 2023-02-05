@@ -3,7 +3,7 @@ import Divide from './Divide';
 //
 import type { PropsWithChildren, CSSProperties } from 'react';
 
-const PageTitle = ({ children }: PropsWithChildren<void>) => (
+const PageTitle = ({ children }: PropsWithChildren<{}>) => (
   <header style={styles.titleArea}>
     <h2 style={styles.titleText}>{children}</h2>
     <Divide />
