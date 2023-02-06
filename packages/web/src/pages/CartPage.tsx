@@ -18,8 +18,6 @@ const CartPage = () => {
 
   const { isLoading } = useFetchCartList();
 
-  if (!carts || !carts.length) return <>장바구니가 비었어요</>;
-
   if (isLoading) return <>로딩 중</>;
 
   return (

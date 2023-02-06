@@ -6,18 +6,19 @@ import type { CSSProperties } from 'react';
 type PaymentCardProps = {
   price: string;
   count: number;
+  type?: 'order' | 'cart';
 };
 
-const PaymentCard = ({ price, count }: PaymentCardProps) => (
+const PaymentCard = ({ price, count, type = 'cart' }: PaymentCardProps) => (
   <div style={styles.paymentCardContainer}>
     <div style={styles.paymentCardTitleArea}>
-      <h3 style={styles.paymentCardTitle}>결제예상금액</h3>
+      <h3 style={styles.paymentCardTitle}>{type === 'cart' ? '결제예상금액' : '결제금액'}</h3>
     </div>
     <Divide $theme="gray" />
     <div style={styles.paymentCardInfoContainer}>
       <div style={styles.paymentCardInfoArea}>
         <span style={styles.paymentCardHighlightText}>
-          결제예상금액
+          {type === 'cart' ? '결제예상금액' : '총 결제금액'}
           <span style={styles.paymentCardHighlight} />
         </span>
         <span style={styles.paymentCardHighlightText}>
@@ -27,7 +28,7 @@ const PaymentCard = ({ price, count }: PaymentCardProps) => (
       </div>
       <div style={styles.paymentCardButtonArea}>
         <Button $isBlock $size="large" $theme="primary">
-          주문하기 ({count}개)
+          {type === 'cart' ? `주문하기 (${count}개)` : `${price}원 결제하기`}
         </Button>
       </div>
     </div>

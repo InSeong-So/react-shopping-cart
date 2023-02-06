@@ -1,4 +1,4 @@
-import { Fragment, useRef } from 'react';
+import { Fragment, useRef, useState } from 'react';
 //
 import { Button, Checkbox, Divide } from '@/components';
 import styles from './Cart.styled';
@@ -11,10 +11,15 @@ type CartListProps = {
 };
 
 const CartList = ({ carts }: CartListProps) => {
-  const allCheckboxRef = useRef<HTMLInputElement>(null);
+  const refs = useRef<Array<HTMLInputElement | null>>([]);
+  const [allChecked, setAllChecked] = useState(false);
 
   const handleChange = () => {
-    console.log(allCheckboxRef.current);
+    setAllChecked(!allChecked);
+
+    for (let i = 0; i < refs.current.length; i++) {
+      refs.current[i].checked = !allChecked;
+    }
   };
 
   return (
@@ -24,7 +29,7 @@ const CartList = ({ carts }: CartListProps) => {
           name="all-delete-product"
           label="선택해제"
           onChange={handleChange}
-          $checkboxRef={allCheckboxRef}
+          checked={allChecked}
         />
         <Button $size="small" $theme="secondary">
           상품삭제
@@ -34,7 +39,7 @@ const CartList = ({ carts }: CartListProps) => {
       <Divide $theme="gray" />
       {carts.map((cartItem, index) => (
         <Fragment key={cartItem.productId}>
-          <CartItem item={cartItem} />
+          <CartItem item={cartItem} ref={(element) => (refs.current[index] = element)} />
           {index !== carts.length && <Divide $theme="thin" />}
         </Fragment>
       ))}

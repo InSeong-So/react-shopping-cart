@@ -1,5 +1,5 @@
 import { useAddProductToCart } from '@/queries';
-import { memo } from 'react';
+import { memo, MouseEvent, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 //
 import { CartIcon } from '@/icons';
@@ -15,10 +15,13 @@ type ProductProps = {
 };
 
 const ProductItem = ({ item, type = 'normal' }: ProductProps) => {
+  const cartIconRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const { mutate } = useAddProductToCart();
 
-  const handleClickGoToDetailPage = () => {
+  const handleClickGoToDetailPage = ({ target }: MouseEvent<HTMLDivElement>) => {
+    if (target === cartIconRef.current) return;
+    console.log(target);
     navigate(`/product-detail?productId=${item.productId}`);
   };
 
@@ -38,7 +41,11 @@ const ProductItem = ({ item, type = 'normal' }: ProductProps) => {
               <span style={styles.productItemInfoName}>{item.title}</span>
               <span style={styles.productItemInfoPrice}>{item.price}원</span>
             </div>
-            <div style={styles.productItemInfoIconArea} onClick={handleClickProductToCart}>
+            <div
+              ref={cartIconRef}
+              style={styles.productItemInfoIconArea}
+              onClick={handleClickProductToCart}
+            >
               <CartIcon />
             </div>
           </div>

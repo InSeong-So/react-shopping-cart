@@ -1,5 +1,5 @@
 import { useDeleteProductFromCart, useUpdateQuantityFromCart } from '@/queries';
-import { useState, WheelEvent } from 'react';
+import { forwardRef, memo, useState, WheelEvent } from 'react';
 //
 import { Button, Checkbox } from '@/components';
 import { TrashIcon } from '@/icons';
@@ -16,7 +16,7 @@ const numberWheelPrevent = (event: WheelEvent<HTMLInputElement>) => {
   $target.blur();
 };
 
-const CartItem = ({ item }: CartItemProps) => {
+const CartItem = forwardRef<HTMLInputElement, CartItemProps>(({ item }, ref) => {
   const { mutate } = useUpdateQuantityFromCart();
   const { mutate: deleteProductFromCart } = useDeleteProductFromCart();
   const [count, setCount] = useState(item.quantity);
@@ -31,13 +31,15 @@ const CartItem = ({ item }: CartItemProps) => {
   };
 
   const handleClickRemoveItem = () => {
+    if (!confirm('상품을 장바구니에서 제거할까요?')) return;
+
     deleteProductFromCart(item.productId);
   };
 
   return (
     <div style={styles.cartItemArea}>
       <div style={styles.cartItemInfoArea}>
-        <Checkbox.Base defaultChecked={item.isChecked} />
+        <Checkbox.Base defaultChecked={item.isChecked} ref={ref} />
         <img style={styles.cartItemInfoImage} src={item.src} alt={item.title} />
         <span>{item.title}</span>
       </div>
@@ -74,6 +76,6 @@ const CartItem = ({ item }: CartItemProps) => {
       </div>
     </div>
   );
-};
+});
 
-export default CartItem;
+export default memo(CartItem);

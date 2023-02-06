@@ -1,4 +1,4 @@
-import { Palette } from '@/themes';
+import { Font, Palette } from '@/themes';
 //
 import type { CSSProperties } from 'react';
 
@@ -9,7 +9,7 @@ const styles: Record<string, CSSProperties> = {
 
     display: 'flex',
     flexDirection: 'column',
-    gap: 80,
+    gap: 38,
 
     padding: '24px 0',
   },
@@ -30,9 +30,34 @@ const styles: Record<string, CSSProperties> = {
 
     cursor: 'pointer',
   },
-  orderPaymentArea: {},
-  orderLeftSection: {},
-  orderRightSection: {},
+  orderPaymentTitle: {
+    padding: '0 15px',
+
+    color: Palette.Gray90,
+    ...Font.regular,
+    ...Font.p1,
+  },
+  orderPaymentArea: {
+    width: '100%',
+
+    display: 'flex',
+  },
+  orderLeftSection: {
+    width: 'calc(60% - 30px)',
+
+    padding: '0 15px',
+  },
+  orderRightSection: {
+    position: 'relative',
+    flex: 1,
+    height: 320,
+
+    display: 'flex',
+    flexDirection: 'column',
+
+    margin: '0 12px 0 80px',
+    border: `1px solid ${Palette.Gray30}`,
+  },
 };
 
 export default styles;

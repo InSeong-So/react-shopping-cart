@@ -5,4 +5,3 @@ export { default as Button } from './Button';
 export { default as PageTitle } from './PageTitle';
 export { default as ProductItem } from './ProductItem';
 export { default as OrderItem } from './OrderItem';
-export { default as InfiniteScrollBox } from './InfiniteScrollBox';

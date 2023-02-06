@@ -1,41 +1,31 @@
-import { PageTitle } from '@/components';
+import { Divide, PageTitle } from '@/components';
 import OrderItem from '@/components/OrderItem';
 import {
   orderContainerStyle,
   orderPaymentAreaStyle,
   orderLeftSectionStyle,
   orderRightSectionStyle,
+  orderPaymentTitleStyle,
 } from '@/template/Order';
+import PaymentCard from '@/template/PaymentCard';
 
 const OrderPage = () => (
   <section style={orderContainerStyle}>
     <PageTitle>주문/결제</PageTitle>
 
+    <h3 style={orderPaymentTitleStyle}>주문 상품(3건)</h3>
     <div style={orderPaymentAreaStyle}>
       <section style={orderLeftSectionStyle}>
-        <h3 className="order-title">주문 상품(3건)</h3>
-        <hr className="divide-line-gray mt-10" />
+        <Divide $theme="gray" />
         {Array.from({ length: 3 }, (_, index) => (
           <>
             <OrderItem key={index} type="confirm" />
-            <hr className="divide-line-thin mt-10" />
+            <Divide $theme="thin" />
           </>
         ))}
       </section>
       <section style={orderRightSectionStyle}>
-        <div className="order-right-section__top">
-          <h3 className="order-title">결제금액</h3>
-        </div>
-        <hr className="divide-line-thin" />
-        <div className="order-right-section__bottom">
-          <div className="flex justify-between p-20 mt-20">
-            <span className="highlight-text">총 결제금액</span>
-            <span className="highlight-text">21,800원</span>
-          </div>
-          <div className="flex-center mt-30 mx-10">
-            <button className="primary-button flex-center">21,800원 결제하기</button>
-          </div>
-        </div>
+        <PaymentCard price="325,600" count={4} type="order" />
       </section>
     </div>
   </section>
