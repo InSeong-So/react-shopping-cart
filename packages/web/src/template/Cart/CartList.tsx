@@ -1,4 +1,5 @@
-import { Fragment, useRef, useState } from 'react';
+import { useSelectAllProductFromCart, useSelectProductFromCart } from '@/queries';
+import { ChangeEvent, Fragment, useState } from 'react';
 //
 import { Button, Checkbox, Divide } from '@/components';
 import styles from './Cart.styled';
@@ -11,15 +12,24 @@ type CartListProps = {
 };
 
 const CartList = ({ carts }: CartListProps) => {
-  const refs = useRef<Array<HTMLInputElement | null>>([]);
-  const [allChecked, setAllChecked] = useState(false);
+  const { mutate: selectProductFromCart } = useSelectProductFromCart();
+  const { mutate: selectAllProductFromCart } = useSelectAllProductFromCart();
 
-  const handleChange = () => {
-    setAllChecked(!allChecked);
+  const [isCheckAll, setIsCheckAll] = useState(false);
+  const [isCheckItem, setCheckItem] = useState<string[]>(carts.map(({ productId }) => productId));
 
-    for (let i = 0; i < refs.current.length; i++) {
-      refs.current[i].checked = !allChecked;
-    }
+  const handleChangeSelectAll = () => {
+    selectAllProductFromCart(!isCheckAll);
+    setIsCheckAll(!isCheckAll);
+    if (isCheckAll) return setCheckItem([]);
+    setCheckItem(carts.map((item) => item.productId));
+  };
+
+  const handleChangeSelect = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    const { id, checked } = target;
+    selectProductFromCart(id);
+    if (!checked) return setCheckItem(isCheckItem.filter((item) => item !== id));
+    setCheckItem([...isCheckItem, id]);
   };
 
   return (
@@ -27,19 +37,23 @@ const CartList = ({ carts }: CartListProps) => {
       <div style={styles.cartDeleteAllCheckboxArea}>
         <Checkbox.Container
           name="all-delete-product"
-          label="선택해제"
-          onChange={handleChange}
-          checked={allChecked}
+          label={isCheckAll ? '선택 해제' : '전체 선택'}
+          onChange={handleChangeSelectAll}
+          checked={isCheckAll}
         />
         <Button $size="small" $theme="secondary">
-          상품삭제
+          상품 삭제
         </Button>
       </div>
-      <h3 style={styles.cartListTitle}>든든배송 상품 (3개)</h3>
+      <h3 style={styles.cartListTitle}>든든배송 상품 ({carts.length}개)</h3>
       <Divide $theme="gray" />
       {carts.map((cartItem, index) => (
         <Fragment key={cartItem.productId}>
-          <CartItem item={cartItem} ref={(element) => (refs.current[index] = element)} />
+          <CartItem
+            item={cartItem}
+            isChecked={isCheckItem.includes(cartItem.productId)}
+            handleSelect={handleChangeSelect}
+          />
           {index !== carts.length && <Divide $theme="thin" />}
         </Fragment>
       ))}

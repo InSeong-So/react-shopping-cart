@@ -1,14 +1,16 @@
-import { useDeleteProductFromCart, useUpdateQuantityFromCart } from '@/queries';
-import { forwardRef, memo, useState, WheelEvent } from 'react';
+import { ChangeEvent, useState, WheelEvent } from 'react';
 //
-import { Button, Checkbox } from '@/components';
 import { TrashIcon } from '@/icons';
+import { Button, Checkbox } from '@/components';
+import { useDeleteProductFromCart, useUpdateQuantityFromCart } from '@/queries';
 import styles from './Cart.styled';
 //
 import type { ProductType } from 'global-types';
 
 type CartItemProps = {
   item: ProductType;
+  isChecked: boolean;
+  handleSelect: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 const numberWheelPrevent = (event: WheelEvent<HTMLInputElement>) => {
@@ -16,7 +18,7 @@ const numberWheelPrevent = (event: WheelEvent<HTMLInputElement>) => {
   $target.blur();
 };
 
-const CartItem = forwardRef<HTMLInputElement, CartItemProps>(({ item }, ref) => {
+const CartItem = ({ item, isChecked, handleSelect }: CartItemProps) => {
   const { mutate } = useUpdateQuantityFromCart();
   const { mutate: deleteProductFromCart } = useDeleteProductFromCart();
   const [count, setCount] = useState(item.quantity);
@@ -39,7 +41,7 @@ const CartItem = forwardRef<HTMLInputElement, CartItemProps>(({ item }, ref) => 
   return (
     <div style={styles.cartItemArea}>
       <div style={styles.cartItemInfoArea}>
-        <Checkbox.Base defaultChecked={item.isChecked} ref={ref} />
+        <Checkbox.Base id={item.productId} onChange={handleSelect} checked={isChecked} />
         <img style={styles.cartItemInfoImage} src={item.src} alt={item.title} />
         <span>{item.title}</span>
       </div>
@@ -76,6 +78,6 @@ const CartItem = forwardRef<HTMLInputElement, CartItemProps>(({ item }, ref) => 
       </div>
     </div>
   );
-});
+};
 
-export default memo(CartItem);
+export default CartItem;

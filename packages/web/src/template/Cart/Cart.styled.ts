@@ -113,6 +113,11 @@ const styles: Record<string, CSSProperties> = {
     ...Font.regular,
     ...Font.p1,
   },
+  cartEmptyContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
 };
 
 export default styles;

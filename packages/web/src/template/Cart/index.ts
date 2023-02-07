@@ -6,3 +6,4 @@ export const cartLeftSectionStyle = styles.cartLeftSection;
 export const cartRightSectionStyle = styles.cartRightSection;
 
 export { default as CartList } from './CartList';
+export { default as CartEmpty } from './CartEmpty';

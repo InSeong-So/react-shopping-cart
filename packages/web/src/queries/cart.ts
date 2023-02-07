@@ -5,6 +5,8 @@ import {
   addCarts,
   deleteProductFromCarts,
   getCarts,
+  selectAllProductFromCart,
+  selectProductFromCart,
   updateProductQuantityFromCarts,
 } from '@/client';
 import { useSetAtom } from 'jotai';
@@ -31,7 +33,27 @@ export const useAddProductToCart = () => {
 
 export const useUpdateQuantityFromCart = () => {
   const setCarts = useSetAtom(cartsAtom);
-  return useMutation(['patch', 'cart'], updateProductQuantityFromCarts, {
+  return useMutation(['patch', 'cart', 'quantity'], updateProductQuantityFromCarts, {
+    onSuccess(item) {
+      if (!item) return;
+      setCarts(item);
+    },
+  });
+};
+
+export const useSelectProductFromCart = () => {
+  const setCarts = useSetAtom(cartsAtom);
+  return useMutation(['patch', 'cart', 'select'], selectProductFromCart, {
+    onSuccess(item) {
+      if (!item) return;
+      setCarts(item);
+    },
+  });
+};
+
+export const useSelectAllProductFromCart = () => {
+  const setCarts = useSetAtom(cartsAtom);
+  return useMutation(['patch', 'cart', 'select', 'all'], selectAllProductFromCart, {
     onSuccess(item) {
       if (!item) return;
       setCarts(item);

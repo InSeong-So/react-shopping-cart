@@ -1,3 +1,4 @@
+import { ProductType } from 'global-types';
 import { rest } from 'msw';
 import { productStore } from './store';
 
@@ -34,16 +35,30 @@ const productHandlers = [
   }),
 
   rest.post('/carts', async (req, res, ctx) => {
-    const { item } = await req.json();
+    const { item } = await req.json<{ item: ProductType }>();
 
     const carts = await productStore.addCarts(item);
     return res(ctx.status(200), ctx.delay(300), ctx.json(carts));
   }),
 
   rest.patch('/carts', async (req, res, ctx) => {
-    const { item } = await req.json();
+    const { item } = await req.json<{ item: ProductType }>();
 
     const carts = await productStore.updateCartItem(item);
+    return res(ctx.status(200), ctx.delay(300), ctx.json(carts));
+  }),
+
+  rest.patch('/cart/item-select', async (req, res, ctx) => {
+    const { productId } = await req.json<{ productId: string }>();
+
+    const carts = await productStore.selectCartItem(productId);
+    return res(ctx.status(200), ctx.delay(300), ctx.json(carts));
+  }),
+
+  rest.patch('/cart/item-select-all', async (req, res, ctx) => {
+    const { isChecked } = await req.json<{ isChecked: boolean }>();
+
+    const carts = await productStore.selectAllCartItem(isChecked);
     return res(ctx.status(200), ctx.delay(300), ctx.json(carts));
   }),
 

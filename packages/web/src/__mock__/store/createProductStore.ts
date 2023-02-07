@@ -18,6 +18,10 @@ const createProductStore = () => {
   }
 
   return {
+    async reset() {
+      await _productStore.setItem<ProductType[]>('products', managedList);
+      await _productStore.setItem<ProductType[]>('carts', []);
+    },
     async init() {
       const products = await _productStore.getItem('products');
       const carts = await _productStore.getItem('carts');
@@ -61,6 +65,34 @@ const createProductStore = () => {
         const updatedCarts = prevCarts.map((cartItem) =>
           cartItem.productId === item.productId ? item : cartItem,
         );
+        await _productStore.setItem<ProductType[]>('carts', updatedCarts);
+
+        return updatedCarts;
+      } catch (error) {
+        return prevCarts;
+      }
+    },
+    async selectCartItem(productId: string) {
+      const prevCarts = await storedCarts();
+
+      try {
+        const updatedCarts = prevCarts.map((cartItem) =>
+          cartItem.productId === productId
+            ? { ...cartItem, isChecked: !cartItem.isChecked }
+            : cartItem,
+        );
+        await _productStore.setItem<ProductType[]>('carts', updatedCarts);
+
+        return updatedCarts;
+      } catch (error) {
+        return prevCarts;
+      }
+    },
+    async selectAllCartItem(isChecked: boolean) {
+      const prevCarts = await storedCarts();
+
+      try {
+        const updatedCarts = prevCarts.map((cartItem) => ({ ...cartItem, isChecked }));
         await _productStore.setItem<ProductType[]>('carts', updatedCarts);
 
         return updatedCarts;

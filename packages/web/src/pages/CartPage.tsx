@@ -1,10 +1,11 @@
-import { cartsAtom, cartTotalPriceAtom } from '@/stores';
 import { useAtomValue } from 'jotai';
+import { cartsAtom, cartTotalPriceAtom } from '@/stores';
 //
 import { PageTitle } from '@/components';
 import { useFetchCartList } from '@/queries';
 import {
   CartList,
+  CartEmpty,
   cartContainerStyle,
   cartAreaStyle,
   cartLeftSectionStyle,
@@ -17,6 +18,8 @@ const CartPage = () => {
   const totalPrice = useAtomValue(cartTotalPriceAtom);
 
   const { isLoading } = useFetchCartList();
+
+  if (carts.length < 1) return <CartEmpty />;
 
   if (isLoading) return <>로딩 중</>;
 
